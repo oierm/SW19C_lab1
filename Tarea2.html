@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SW_LAB1</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: rgb(211, 235, 183);
+            }
+            h3 {
+                color: rgb(235, 23, 23);
+            }
+        </style>
+         
+    </head>
+    <body>
+        <h1>Calculadora</h1>
+        
+        <h3>Primer valor:
+        <INPUT TYPE="number" ID="primerValor"/>
+        <br/><br/>
+        Operador:
+        <select name="operador" id="operaciones">
+            <option value='suma'>+</option>
+            <option value='resta'>-</option>
+            <option value='multiplicacion'>*</option>
+            <option value='division'>/</option>
+        </select>
+        <br/><br/>
+        Segundo valor:
+        <INPUT TYPE="number" ID="segundoValor"/>
+        <br/><br/><br/>
+        Resultado:
+        <INPUT TYPE="number" ID="resultado"/>
+        <INPUT TYPE="text" ID="solucion"/></h3>
+        
+        <INPUT TYPE="button" NAME="boton" VALUE="Comprobar" ID="botonComprobar"/>
+        <INPUT TYPE="button" NAME="boton" VALUE="Reiniciar" ID="botonReiniciar"/>
+
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+
+        <script>
+            $("#botonComprobar").click(function(){
+                var x=parseFloat(jQuery('#primerValor').val());
+                var y=parseFloat(jQuery('#segundoValor').val());
+                var z=parseFloat(jQuery('#resultado').val());
+                var o=$('#operaciones').val();
+                
+                if(o=='suma'){
+                    result=x+y;
+                }
+                if(o=='resta'){
+                    result=x-y;
+                }
+                if(o=='multiplicacion'){
+                    result=x*y;
+                }
+                if(o=='division'){
+                    result=x/y;
+                }
+                if(result==z){
+                    $('#solucion').val("Correcto");
+                }
+                if(result!=z){
+                    $('#solucion').val("Incorrecto");
+                }
+            });
+            $("#botonReiniciar").click(function(){
+                $('#primerValor').val("");
+                $('#segundoValor').val("");
+                $('#operaciones').val("suma");
+                $('#resultado').val("");
+                $('#solucion').val("");
+            });
+        </script>
+    </body>
+</html>
